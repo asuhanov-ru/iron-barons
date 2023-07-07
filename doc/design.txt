@@ -33,7 +33,11 @@ Universe
 Set of space locations. strategic planning horizon
 
 
-space location
+#Sector
+
+1. Список #SpaceLocation. 
+
+#SpaceLocation
 
 single tactic map
 
@@ -46,8 +50,9 @@ single tactic map
 7. Пока локация ничья все могут добывать в ней ресурсы одинаково
 8. #LocationProperties #SolIntensity 
 9. Чтобы перемещаться между локациями нужен #WarpDrive который устанавливается на #Ships начиная с #Big
+10. Перемещение от #SpaceLocation к #SpaceLocation происходит через #JumpPoint
 
-Ships
+#Ship
 
 1. #CorpusType #Small, #Medium, #Big, #Large, #Huge, #Mother, #Leviathan
 2. #Special #Probe #Tug #Truck
@@ -61,7 +66,7 @@ Ships
 9. В корпусе кждого типа можно разместить ограниченное количество #ShipStructures
 
 
-Tecnology
+#Tecnology
 
 1. Технологии позволяют строить новые #Ships #Weapon добывать #Resources быстрее, с большей глубины
 
@@ -77,13 +82,36 @@ Tecnology
 
 #Asteroids
 
-1. Астероиды могут быть большими, тогда на них может приземлится #Mother, построить #Plant< #Farm или #Laboratory
+1. Астероиды могут быть #Big, тогда на них может приземлится #Mother, и построить #Structures
 2. На маленьких можно построить #Mine, #CommandCentre или #Defence 
 3. #AsteroidTypes #IceLump #IronRock #SiliconRock #CarbonRock
+
+4. #Big
+4.1 #StructurePlaces
+
+#StructurePlaces
+
+1. Разные #Structures требуют #StructurePlaces разных размеров
+2. (?) Можно строить на больших #StructurePlaces несколько маленьких #Structures
 
 
 #Resources
 
-1. Упс ресуры нужно добывать и хранить.
+1. Упс, ресуры нужно добывать и хранить.
 2. Если оставить их в локации, которая осталась без присмотра их можно тупо забрать
-3. #ResourceType #Metal #RareMetal добывается на #IronRock #Composites на #SiliconRock #Carbonates на #CarbonRock
+3. #ResourceOreType добываются на разных #AsteroidTypes
+
+#ResourceOreType
+
+1. #Metal #RareMetal добывается на #IronRock; 
+2. #Composites на #SiliconRock; 
+3. #Carbonates на #CarbonRock; 
+4. #Fuel на #IceLump
+
+#Structures
+
+1. #Plant 
+2. (?) #Farm 
+3. #Laboratory
+4. #Mine
+5. #Habitancy
