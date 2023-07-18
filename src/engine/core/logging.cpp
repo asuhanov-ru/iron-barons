@@ -61,7 +61,7 @@ void logger_printf(const char *id, const char *format, ...) {
         return;
     
     va_start(args, format);
-	vsprintf(temp, format, args);
+	// vsprintf(temp, format, args);
 	va_end(args);
 
 	logger_print(id, temp.c_str());

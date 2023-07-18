@@ -4,6 +4,8 @@ set(GAME_SRC IronBarons.cpp
 
 add_executable(IronBarons ${EXE_GUI_TYPE} ${GAME_SRC})
 
-target_link_libraries(IronBarons PUBLIC engine)
+target_link_libraries(IronBarons sdlmain)
 
-target_include_directories(IronBarons PUBLIC ${CMAKE_SOURCE_DIR}/engine)
+target_link_libraries(IronBarons engine)
+
+target_include_directories(IronBarons PUBLIC ${CMAKE_SOURCE_DIR}/src/engine)
