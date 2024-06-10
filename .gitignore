@@ -154,3 +154,7 @@ nbactions*.xml
 filmfestival.log
 
 .vagrant/
+.lock*
+.vscode/
+waf*
+

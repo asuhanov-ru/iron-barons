@@ -1,2 +1,2 @@
 # iron-barons
-RTS game
+RTS game sandbox
