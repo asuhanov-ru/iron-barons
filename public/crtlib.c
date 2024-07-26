@@ -14,14 +14,14 @@ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 GNU General Public License for more details.
 */
 #include "port.h"
-#include "common_types.h"
+#include "xash3d_types.h"
 #include "const.h"
 #include <math.h>
 #include <stdarg.h>
 #include <time.h>
 #include "stdio.h"
 #include "crtlib.h"
-#include "pub_mathlib.h"
+#include "xash3d_mathlib.h"
 
 void Q_strnlwr( const char *in, char *out, size_t size_out )
 {
@@ -274,7 +274,7 @@ const byte *Q_memmem( const byte *haystack, size_t haystacklen, const byte *need
 	return NULL;
 }
 
-void Q_memor( byte *IB_RESTRICT dst, const byte *IB_RESTRICT src, size_t len )
+void Q_memor( byte *XASH_RESTRICT dst, const byte *XASH_RESTRICT src, size_t len )
 {
 	size_t i;
 	for( i = 0; i < len; i++ ) // msvc likes to optimize this loop form

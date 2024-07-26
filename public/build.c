@@ -134,7 +134,7 @@ Shortcut for Q_buildos_
 */
 const char *Q_buildos( void )
 {
-	return Q_PlatformStringByID( IB_PLATFORM );
+	return Q_PlatformStringByID( XASH_PLATFORM );
 }
 
 
@@ -222,10 +222,10 @@ Returns current name of the architecture. Without any spaces.
 const char *Q_buildarch( void )
 {
 	return Q_ArchitectureStringByID(
-		IB_ARCHITECTURE,
-		IB_ARCHITECTURE_ABI,
-		IB_ENDIANNESS,
-#if IB_64BIT
+		XASH_ARCHITECTURE,
+		XASH_ARCHITECTURE_ABI,
+		XASH_ENDIANNESS,
+#if XASH_64BIT
 		true
 #else
 		false
@@ -238,12 +238,12 @@ const char *Q_buildarch( void )
 Q_buildcommit
 
 Returns a short hash of current commit in VCS as string
-IB_BUILD_COMMIT must be passed in quotes
+XASH_BUILD_COMMIT must be passed in quotes
 =============
 */
 const char *Q_buildcommit( void )
 {
-	return IB_BUILD_COMMIT;
+	return XASH_BUILD_COMMIT;
 }
 
 /*
@@ -251,11 +251,11 @@ const char *Q_buildcommit( void )
 Q_buildbranch
 
 Returns current branch name in VCS as string
-IB_BUILD_BRANCH must be passed in quotes
+XASH_BUILD_BRANCH must be passed in quotes
 =============
 */
 const char *Q_buildbranch( void )
 {
-	return IB_BUILD_BRANCH;
+	return XASH_BUILD_BRANCH;
 }
 

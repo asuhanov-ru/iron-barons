@@ -59,8 +59,8 @@ def simple_check(conf, fragment, msg, mandatory=False, **kw):
 def configure(conf):
 	# private to libpublic
 	conf.load('gitversion')
-	conf.define('IB_BUILD_COMMIT', conf.env.GIT_VERSION if conf.env.GIT_VERSION else 'unknown-commit')
-	conf.define('IB_BUILD_BRANCH', conf.env.GIT_BRANCH  if conf.env.GIT_BRANCH  else 'unknown-branch')
+	conf.define('XASH_BUILD_COMMIT', conf.env.GIT_VERSION if conf.env.GIT_VERSION else 'unknown-commit')
+	conf.define('XASH_BUILD_BRANCH', conf.env.GIT_BRANCH  if conf.env.GIT_BRANCH  else 'unknown-branch')
 
 	# need to expose it for everyone using libpublic headers
 	conf.env.EXPORT_DEFINES_LIST = []

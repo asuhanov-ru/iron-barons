@@ -20,7 +20,7 @@ GNU General Public License for more details.
 #include <stdarg.h>
 #include <ctype.h>
 #include "build.h"
-#include "common_types.h"
+#include "xash3d_types.h"
 
 #ifdef __cplusplus
 extern "C"
@@ -76,7 +76,7 @@ void Q_atov( float *vec, const char *str, size_t siz );
 qboolean Q_stricmpext( const char *pattern, const char *text );
 qboolean Q_strnicmpext( const char *pattern, const char *text, size_t minimumlen );
 const byte *Q_memmem( const byte *haystack, size_t haystacklen, const byte *needle, size_t needlelen );
-void Q_memor( byte *IB_RESTRICT dst, const byte *IB_RESTRICT src, size_t len );
+void Q_memor( byte *XASH_RESTRICT dst, const byte *XASH_RESTRICT src, size_t len );
 const char *Q_timestamp( int format );
 int Q_vsnprintf( char *buffer, size_t buffersize, const char *format, va_list args );
 int Q_snprintf( char *buffer, size_t buffersize, const char *format, ... ) _format( 3 );

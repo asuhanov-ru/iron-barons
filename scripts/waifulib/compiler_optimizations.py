@@ -122,9 +122,9 @@ POLLY_CFLAGS = {
 }
 
 OPENMP_CFLAGS = {
-	'gcc':   ['-fopenmp'],
-	'clang': ['-fopenmp'],
-	'msvc':  ['/openmp']
+	'gcc':   ['-fopenmp', '-DHAVE_OPENMP=1'],
+	'clang': ['-fopenmp', '-DHAVE_OPENMP=1'],
+	'msvc':  ['/openmp', '/DHAVE_OPENMP=1']
 }
 
 OPENMP_LINKFLAGS = {
@@ -155,19 +155,19 @@ def options(opt):
 		help = 'build type: debug, release or none(custom flags)')
 
 	grp.add_option('--enable-lto', action = 'store_true', dest = 'LTO', default = False,
-		help = 'enable Link Time Optimization if possible [default: %default]')
+		help = 'enable Link Time Optimization if possible [default: %(default)s]')
 
 	grp.add_option('--enable-poly-opt', action = 'store_true', dest = 'POLLY', default = False,
-		help = 'enable polyhedral optimization if possible [default: %default]')
+		help = 'enable polyhedral optimization if possible [default: %(default)s]')
 
 	grp.add_option('--enable-openmp', action = 'store_true', dest = 'OPENMP', default = False,
-		help = 'enable OpenMP extensions [default: %default]')
+		help = 'enable OpenMP extensions [default: %(default)s]')
 
 	grp.add_option('--enable-profile', action = 'store_true', dest = 'PROFILE_GENERATE', default = False,
-		help = 'enable profile generating build (stored in xash3d-prof directory) [default: %default]')
+		help = 'enable profile generating build (stored in xash3d-prof directory) [default: %(default)s]')
 
 	grp.add_option('--use-profile', action = 'store', dest = 'PROFILE_USE', default = None,
-		help = 'use profile during build [default: %default]')
+		help = 'use profile during build [default: %(default)s]')
 
 def configure(conf):
 	conf.start_msg('Build type')
