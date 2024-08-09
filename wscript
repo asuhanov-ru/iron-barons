@@ -95,6 +95,9 @@ SUBDIRS = [
 	# enabled on PSVita only
 	Subproject('ref/gl/vgl_shim',   lambda x: x.env.DEST_OS == 'psvita'),
 
+	# Game dlls
+	Subproject('game/cl_dll'),
+	Subproject('game/ib'),
 ]
 
 REFDLLS = [
