@@ -11,23 +11,27 @@ top = '.'
 def options(opt):
 	grp = opt.add_option_group('DLL options')
 
-	grp.add_option('--disable-dll', action = 'store_true', dest = 'NO_DLL', default = False,
+	grp.add_option('--disable-dll', action = 'store_true', dest = 'NO_DLL', default = True,
 		help = 'disable game dll build [default: %(default)s]')
 
 
 def configure(conf):
-	conf.env.NO_CLDLL = conf.options.NO_CLDLL
+	conf.env.NO_DLL = conf.options.NO_DLL
 	conf.define('WIN32', 1)
 
-	if conf.options.NO_CLDLL:
+	if conf.options.NO_DLL:
 		return
 
 
 def build(bld):
 
-	source = bld.path.ant_glob(['*.cpp'])
+	if bld.env.NO_DLL:
+		return
 
-	includes = [ '.' , '../common' , '../pm_shared' , '../public']
+	source = bld.path.ant_glob(['*.cpp'])
+	
+
+	includes = [ '.' , '../common' , '../pm_shared' , '../public', '../engine']
 
 	bld.shlib(
 		source   = source,

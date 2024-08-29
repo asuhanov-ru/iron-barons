@@ -13,6 +13,13 @@ def options(opt):
 
 	grp.add_option('--disable-cldll', action = 'store_true', dest = 'NO_CLDLL', default = False,
 		help = 'disable cl_dll build [default: %(default)s]')
+	
+	vgui_dev_path = os.path.join(opt.path.path_from(opt.root), '../utils/vgui')
+
+	grp.add_option('--vgui', action = 'store', dest = 'VGUI_DEV', default=vgui_dev_path,
+		help = 'path to vgui-dev repo [default: %(default)s]')
+		
+	opt.load('sdl2')
 
 
 def configure(conf):
@@ -21,19 +28,40 @@ def configure(conf):
 
 	if conf.options.NO_CLDLL:
 		return
+	
+	conf.load('sdl2')
+
+	vgui_dev = conf.options.VGUI_DEV
+
+	conf.env.LIB_VGUI = ['vgui']
+
+	conf.env.LIBPATH_VGUI = [os.path.abspath(os.path.join(vgui_dev, 'lib/win32_vc6/'))]
+	conf.env.INCLUDES_VGUI = [os.path.abspath(os.path.join(vgui_dev, 'include'))]
+
+	conf.start_msg('Configuring VGUI by provided path')
+	conf.end_msg('yes: {0}, {1}, {2}'.format(conf.env.LIB_VGUI, conf.env.LIBPATH_VGUI, conf.env.INCLUDES_VGUI))
 
 
 def build(bld):
 
-	source = bld.path.ant_glob(['*.cpp'])
+	source = bld.path.ant_glob(['*.cpp', 'ib/*.cpp', 'public/*.cpp', 'game_shared/*.cpp', 'pm_shared/*.c'])
 
-	includes = [ '.' , '../common' , '../pm_shared' , '../public']
+	libs = ['USER32', 'SHELL32', 'GDI32', 'ADVAPI32', 'DBGHELP', 'PSAPI', 'WS2_32' ]
+
+	libs.append('SDL2')
+
+	libs.append('VGUI')
+
+	libs.append('public')
+
+	includes = [ '.' , '../common' , '../pm_shared' , '../engine' , '../public' , '../game_shared' , '../ib', '../utils/vgui/include']
 
 	bld.shlib(
 		source   = source,
 		target   = 'cl_dll',
 		features = 'cxx',
 		includes = includes,
+		use 	 = libs,
 		rpath    = bld.env.DEFAULT_RPATH,
 		install_path = bld.env.LIBDIR,
 		subsystem = bld.env.MSVC_SUBSYSTEM

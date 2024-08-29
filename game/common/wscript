@@ -1,0 +1,29 @@
+#! /usr/bin/env python
+# encoding: utf-8
+# mittorn, 2018
+
+from waflib import Logs, Configure
+import os
+
+def options(opt):
+    # stub
+    return
+
+
+def configure(conf):
+	# stub
+	return
+
+def build(bld):
+    
+    bld(name = 'sdk_includes',
+		export_includes = '. ../common ../pm_shared ../engine')
+	
+    includes = [ '.' , '../common' , '../pm_shared' , '../engine' , '../public' , '../game_shared' , '../ib', '../utils/vgui/include']
+	
+    bld.stlib(source   = bld.path.ant_glob('*.cpp'),
+		target   = 'public',
+		features = 'cxx',
+		use      = 'sdk_includes werror',
+		subsystem = bld.env.MSVC_SUBSYSTEM,
+		includes = includes)
